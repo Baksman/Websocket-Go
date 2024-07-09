@@ -111,7 +111,7 @@ func ListenToWsChannel() {
 			broadCastToAll(response)
 		case "left":
 			response.Action = "list_users"
-			delete(clients,e.conn)
+			delete(clients, e.conn)
 			users := getUserList()
 			response.ConnectedUsers = users
 			broadCastToAll(response)
@@ -123,7 +123,9 @@ func ListenToWsChannel() {
 func getUserList() []string {
 	var userLists = []string{}
 	for _, x := range clients {
-		userLists = append(userLists, x)
+		if x != "" {
+			userLists = append(userLists, x)
+		}
 	}
 
 	sort.Strings(userLists)

@@ -36,7 +36,10 @@
                 <label for="message">Message:</label>
                 <input type="text" name="message" id="message" class="form-controller" autocomplete="off">
             </div>
-
+                <hr> 
+                <a href = "javascript:void(0);" class="btn btn-outline-secondary" id="send-btn">
+                Send message
+                </a>
             <input type="hidden" name="action" id="action">
 
             <hr>
@@ -110,7 +113,30 @@
 
             socket.send(JSON.stringify(jsonData))
 
+
+document.getElementById("message").addEventListener("keydown",function(event){
+if(event.code == "Enter"){
+if(!socket){
+console.log("no connection")
+return false
+}
+event.preventDefault();
+event.stopPropagation();
+sendMessage();
+})
         })
+
+
+
+        function sendMessage(){
+        let jsonData = {};
+        jsonData["action"] = "broadcast"
+        jsonData["username"]= document.getElementById("username").value
+        jsonData["message"] = document.getElementById("message").value
+         
+        socket.send(JSON.stringify(jsonData))
+        document.getElementById("message").value = "";
+        }
 
     })
    </script>
