@@ -14,11 +14,11 @@ server {
     listen [::]:80 default_server;
     server_name _;
 
-       if ($host = www.freessiapay.com) {
+       if ($host = google.com) {
                 return 301 https://$host$request_uri;
         } # managed by Certbot
 
-        if ($host = freessiapay.com) {
+        if ($host = google.com) {
                 return 301 https://$host$request_uri;
         } # managed by Certbot
 }
