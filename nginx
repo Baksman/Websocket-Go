@@ -25,7 +25,7 @@ server {
 
 server {
     listen 443 ssl;
-    server_name freessiapay.com www.freessiapay.com;
+    server_name google.com www.google.com;
 
     ssl_certificate /etc/letsencrypt/live/freessiapay.com/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/freessiapay.com/privkey.pem; # managed by Certbot
